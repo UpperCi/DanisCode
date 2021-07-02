@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin phone {
+	@media (max-width: #{$tablet-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background: rgb(139,0,139);
+    background: linear-gradient(0deg, rgba(139,0,139,1) 0%, rgba(116,98,224,1) 100%);
+
+    $font-color: #fef;
+    $font-dark-color: #ede;
+
+    body {
+        position: relative;
+        height: 100%;
+        margin: 0;
+
+        overflow: hidden;
+
+        main {
+            width: 100%;
+            height: 100%;
+
+            #padding {
+                height: 30vh;
+            }
+    
+            .glass {
+                position: relative;
+                background: rgba( 72, 182, 249, 0.5 );
+                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                backdrop-filter: blur(10px);
+                border-radius: 10px;
+                border: 2px solid rgba( 255, 255, 255, 0.18 );
+    
+                width: fit-content;
+                margin: auto;
+                padding: 1rem 6rem;
+
+                @include phone {
+                    width: calc(100% - 2rem);
+                    margin: 1rem;
+                    padding: 1rem;
+                }
+
+                z-index: 100;
+                p {
+                    margin: 1rem;
+    
+                    color: $font-color;
+                    font-family: 'Rubik', sans-serif;
+                    font-size: 54px;
+
+                    @include phone {
+                        font-size: 36px;
+                    }
+
+                    font-weight: 500;
+                    text-align: center;
+
+                    &.small {
+                        font-weight: 400;
+                        font-size: 32px;
+                        color: $font-dark-color;
+
+                        @include phone {
+                            font-size: 24px;
+                        }
+                    }
+                }
+
+                #socials {
+                    display: flex;
+                    width: fit-content;
+                    margin: 2rem auto;
+                    $social-bg: rgba( 22, 112, 189, 1 );
+
+                    .social {
+                        cursor: pointer;
+
+                        // border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+                        svg {
+                            margin: 0 1rem;
+                            stroke-width: 1.25;
+                            fill: transparent;
+                            width: 72px;
+                            height: 72px;
+
+                            @include phone {
+                                width: 48px;
+                                height: 48px;
+                            }
+
+                            stroke-linejoin: round;
+                            stroke-linecap: round;
+                            stroke: #eae;
+                            filter: drop-shadow( 0px 3px 2px rgba(0, 0, 0, .2));
+
+                            &:hover {
+                                filter: drop-shadow( 0px 3px 2px rgba(0, 0, 0, 0.5));
+                            }
+
+                            &#mail {
+                                &:hover {
+                                    stroke: #fef;
+                                }
+                            }
+
+                            &#yt {
+                                &:hover {
+                                    stroke: #f77;
+                                }
+                            }
+
+                            &#github {
+                                margin-left: 0.25rem;
+                                &:hover {
+                                    stroke: #9af;
+                                }
+                            }
+
+                            transition: all 0.2s;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        #bubbles {
+            height: 100%;
+            width: 100%;
+
+            position: absolute;
+            top: 0;
+
+            bubble {
+                position: absolute;
+                
+                border: 2px solid rgba(255, 255, 255, 0.3);
+
+                background-color: rgba( 255, 255, 255, 0.15 );
+                border-radius: 100rem;
+
+                z-index: 20;
+
+                filter: blur(3px);
+            }
+        }
+    }
+}

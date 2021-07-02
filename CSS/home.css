@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  background: darkmagenta;
+  background: -webkit-gradient(linear, left bottom, left top, from(darkmagenta), to(#7462e0));
+  background: linear-gradient(0deg, darkmagenta 0%, #7462e0 100%);
+}
+
+html body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+html body main {
+  width: 100%;
+  height: 100%;
+}
+
+html body main #padding {
+  height: 30vh;
+}
+
+html body main .glass {
+  position: relative;
+  background: rgba(72, 182, 249, 0.5);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 1rem 6rem;
+  z-index: 100;
+}
+
+@media (max-width: 767px) {
+  html body main .glass {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+html body main .glass p {
+  margin: 1rem;
+  color: #fef;
+  font-family: 'Rubik', sans-serif;
+  font-size: 54px;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  html body main .glass p {
+    font-size: 36px;
+  }
+}
+
+html body main .glass p.small {
+  font-weight: 400;
+  font-size: 32px;
+  color: #ede;
+}
+
+@media (max-width: 767px) {
+  html body main .glass p.small {
+    font-size: 24px;
+  }
+}
+
+html body main .glass #socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+html body main .glass #socials .social {
+  cursor: pointer;
+}
+
+html body main .glass #socials .social svg {
+  margin: 0 1rem;
+  stroke-width: 1.25;
+  fill: transparent;
+  width: 72px;
+  height: 72px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke: #eae;
+  -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+@media (max-width: 767px) {
+  html body main .glass #socials .social svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+html body main .glass #socials .social svg:hover {
+  -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
+}
+
+html body main .glass #socials .social svg#mail:hover {
+  stroke: #fef;
+}
+
+html body main .glass #socials .social svg#yt:hover {
+  stroke: #f77;
+}
+
+html body main .glass #socials .social svg#github {
+  margin-left: 0.25rem;
+}
+
+html body main .glass #socials .social svg#github:hover {
+  stroke: #9af;
+}
+
+html body #bubbles {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+html body #bubbles bubble {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 100rem;
+  z-index: 20;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+/*# sourceMappingURL=home.css.map */
