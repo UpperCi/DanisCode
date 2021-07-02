@@ -2,7 +2,7 @@ const bubbleDiv = document.getElementById('bubbles');
 let rect = bubbleDiv.getBoundingClientRect();
 
 const bubbleSpeed = 80;
-const speedVar = 40;
+// const speedVar = 40;
 const minSize = 60;
 const maxSize = 200;
 
@@ -11,7 +11,8 @@ const maxOffset = 800;
 let delta = 0;
 let deltaTimestamp = 0;
 
-function genBubble(yOffset = 0) {
+function genBubble() {
+    let yOffset = Math.random() * maxOffset;
     let size = minSize + Math.random() * (maxSize - minSize);
     let bubble = document.createElement('bubble');
     bubble.style.top = `${rect.y + rect.height + yOffset}px`;
@@ -19,9 +20,9 @@ function genBubble(yOffset = 0) {
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
 
-    let speedMod = (Math.random() - 0.5) * speedVar;    
+    // let speedMod = (Math.random() - 0.5) * speedVar;    
 
-    bubble.dataset.speedMod = `${speedMod}`;
+    // bubble.dataset.speedMod = `${speedMod}`;
 
     bubbleDiv.appendChild(bubble);
 }
@@ -37,7 +38,7 @@ function updateBubbles(ms) {
     let bubbles = bubbleDiv.children;
     for (let bubble of bubbles) {
         let top = parseFloat(bubble.style.top);
-        top -= (bubbleSpeed + parseFloat(bubble.dataset.speedMod)) * delta;
+        top -= (bubbleSpeed + parseFloat(bubble.style.width) / 4) * delta;
         bubble.style.top = `${top}px`;
         let size = parseFloat(bubble.style.width);
 
@@ -50,10 +51,10 @@ function updateBubbles(ms) {
     requestAnimationFrame((ms) => updateBubbles(ms))
 }
 
-let bubbleCount = Math.min(6, Math.round(rect.width / 150));
+let bubbleCount = Math.min(7, Math.round(rect.width / 125));
 
 for (let i = 0; i < bubbleCount; i++) {
-    genBubble(Math.random() * maxOffset);
+    genBubble();
 }
 
 window.addEventListener('resize', () => {

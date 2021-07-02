@@ -25,7 +25,7 @@ html body main {
 }
 
 html body main #padding {
-  height: 30vh;
+  height: 20vh;
 }
 
 html body main .glass {
@@ -131,10 +131,19 @@ html body main .glass #socials .social svg#yt:hover {
 
 html body main .glass #socials .social svg#github {
   margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 html body main .glass #socials .social svg#github:hover {
   stroke: #9af;
+}
+
+html body main .glass #socials .social svg#itch {
+  stroke-width: 1.25;
+}
+
+html body main .glass #socials .social svg#itch:hover {
+  stroke: #e88;
 }
 
 html body #bubbles {
