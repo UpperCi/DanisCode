@@ -1,5 +1,5 @@
 const carousel = document.getElementById('carousel');
-const turnSpeed = 1;
+const turnSpeed = 0.7;
 const bgString = "linear-gradient(355deg, rgba(96, 33, 121, 0.5) 0%, rgba( 96, 33, 121, 0.6 ) 80%, rgba( 96, 33, 121, 0.8 ) 100%)";
 const calcOffset = 0.5;
 
@@ -42,7 +42,7 @@ const itemData = [
 ]
 
 let focused = 0;
-let prev = 1;
+let prev = 0;
 let held = false;
 let downEvent;
 let width = 100;
@@ -51,6 +51,7 @@ let inter = 0;
 let secDistance = 700; // distance to interpolate 1 second
 let baseOffset = 2;
 let items = 5;
+let focusing = false;
 
 window.addEventListener('load', () => init());
 
@@ -61,15 +62,22 @@ function clampItemPos(n) {
 
 function init() {
     carousel.addEventListener('mousedown', (e) => onMouseDown(e));
-    carousel.addEventListener('touchstart', (e) => onMouseDown(e.changedTouches[0]));
+    carousel.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        onMouseDown(e.changedTouches[0]);
+    });
     document.addEventListener('mouseup', (e) => onMouseUp(e));
     document.addEventListener('touchend', (e) => {
         if (e.id === downEvent.id) {
+            e.preventDefault();
             onMouseUp(e.changedTouches[0]);
         }
      });
     document.addEventListener('mousemove', (e) => onMouseMove(e));
-    document.addEventListener('touchmove', (e) => onMouseMove(e.changedTouches[0]));
+    document.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        onMouseMove(e.changedTouches[0]);
+    });
     generateItems();
     updateCarouselPos(0);
 }
@@ -98,8 +106,10 @@ function generateItems(limit = false) {
 }
 
 function onMouseDown(e) {
-    e.preventDefault();
-    if (!held) {
+    if ('preventDefault' in e) {
+        e.preventDefault();
+    }
+    if (!held && !focusing) {
         carousel.style.cursor = 'grabbing';
         downEvent = e;
         held = true;
@@ -109,7 +119,9 @@ function onMouseDown(e) {
 }
 
 function onMouseUp(e) {
-    e.preventDefault();
+    if ('preventDefault' in e) {
+        e.preventDefault();
+    }
     held = false;
     carousel.style.cursor = 'grab';
     interBG();
@@ -121,6 +133,7 @@ function onMouseUp(e) {
             prev += Math.sign(inter);
             inter -= Math.sign(inter);
         }
+        focusing = true;
         updateCarouselRelease(ms);
     });
 }
@@ -157,13 +170,22 @@ function interBG() {
 
 function onMouseMove(e) {
     if (held) {
-        e.preventDefault();
+        if ('preventDefault' in e) {
+            e.preventDefault();
+        }
         distance = e.pageX - downEvent.pageX;
 
         inter = -distance / secDistance;
         if (Math.abs(inter) > 1) {
             // makes it harder to drag *past* adjacent elements
             inter = Math.sign(inter) + (inter - Math.sign(inter)) / 1.7;
+        }
+
+        let dec = Math.abs(inter % 1);
+
+        if (dec < 0.06 || dec > 0.94) {
+            inter = Math.round(inter);
+            inter += 0.0001; // don't want to worry about whole numbers
         }
 
         updateCarouselPos(inter);
@@ -204,6 +226,7 @@ function updateCarouselRelease(ms) {
     if (Math.abs(delay) / 1 <= delta * speed * turnSpeed) {
         inter = 0;
         prev = focused;
+        focusing = false;
         updateCarouselPos(0);
     } else {
         requestAnimationFrame((ms) => updateCarouselRelease(ms));

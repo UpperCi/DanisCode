@@ -271,7 +271,7 @@ html {
                         }
                         25% {
                             transform: translateY($translate-dist) rotate(-35deg) translateY(-$translate-dist);
-                            opacity: 65%;
+                            opacity: 60%;
                         }
                         50% {
                             transform: translateY($translate-dist / 1.25) rotate(0deg) translateY(-$translate-dist / 1.25);
@@ -279,7 +279,7 @@ html {
                         }
                         75% {
                             transform: translateY($translate-dist) rotate(35deg) translateY(-$translate-dist);
-                            opacity: 65%;
+                            opacity: 60%;
                         }
                         to {
                             transform: translateY(2 * $translate-dist) rotate(70deg) translateY(2 * -$translate-dist);

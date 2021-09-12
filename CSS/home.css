@@ -266,7 +266,7 @@ html body main #carousel .glass.focus {
   25% {
     -webkit-transform: translateY(370%) rotate(-35deg) translateY(-370%);
             transform: translateY(370%) rotate(-35deg) translateY(-370%);
-    opacity: 65%;
+    opacity: 60%;
   }
   50% {
     -webkit-transform: translateY(296%) rotate(0deg) translateY(-296%);
@@ -276,7 +276,7 @@ html body main #carousel .glass.focus {
   75% {
     -webkit-transform: translateY(370%) rotate(35deg) translateY(-370%);
             transform: translateY(370%) rotate(35deg) translateY(-370%);
-    opacity: 65%;
+    opacity: 60%;
   }
   to {
     -webkit-transform: translateY(740%) rotate(70deg) translateY(-740%);
@@ -294,7 +294,7 @@ html body main #carousel .glass.focus {
   25% {
     -webkit-transform: translateY(370%) rotate(-35deg) translateY(-370%);
             transform: translateY(370%) rotate(-35deg) translateY(-370%);
-    opacity: 65%;
+    opacity: 60%;
   }
   50% {
     -webkit-transform: translateY(296%) rotate(0deg) translateY(-296%);
@@ -304,7 +304,7 @@ html body main #carousel .glass.focus {
   75% {
     -webkit-transform: translateY(370%) rotate(35deg) translateY(-370%);
             transform: translateY(370%) rotate(35deg) translateY(-370%);
-    opacity: 65%;
+    opacity: 60%;
   }
   to {
     -webkit-transform: translateY(740%) rotate(70deg) translateY(-740%);
