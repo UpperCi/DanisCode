@@ -6,33 +6,31 @@
 
 html {
   width: 100%;
-  height: 100%;
-  background: darkmagenta;
-  background: -webkit-gradient(linear, left bottom, left top, from(darkmagenta), to(#7462e0));
-  background: linear-gradient(0deg, darkmagenta 0%, #7462e0 100%);
+  min-height: 100%;
+  background-color: #214;
 }
 
 html body {
   position: relative;
   height: 100%;
   margin: 0;
-  overflow: hidden;
 }
 
 html body main {
   width: 100%;
   height: 100%;
+  padding-bottom: 5rem;
 }
 
-html body main #padding {
+html body main .padding {
   height: 20vh;
 }
 
 html body main .glass {
   position: relative;
-  background: rgba(72, 182, 249, 0.5);
-  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: linear-gradient(355deg, rgba(72, 182, 249, 0.4) 0%, rgba(72, 182, 249, 0.5) 80%, rgba(72, 182, 249, 0.7) 100%);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -41,16 +39,7 @@ html body main .glass {
   width: -moz-fit-content;
   width: fit-content;
   margin: auto;
-  padding: 1rem 6rem;
   z-index: 100;
-}
-
-@media (max-width: 767px) {
-  html body main .glass {
-    width: calc(100% - 2rem);
-    margin: 1rem;
-    padding: 1rem;
-  }
 }
 
 html body main .glass p {
@@ -80,7 +69,19 @@ html body main .glass p.small {
   }
 }
 
-html body main .glass #socials {
+html body main #overview {
+  padding: 1rem 4rem;
+}
+
+@media (max-width: 767px) {
+  html body main #overview {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+html body main #overview #socials {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,11 +91,11 @@ html body main .glass #socials {
   margin: 2rem auto;
 }
 
-html body main .glass #socials .social {
+html body main #overview #socials .social {
   cursor: pointer;
 }
 
-html body main .glass #socials .social svg {
+html body main #overview #socials .social svg {
   margin: 0 1rem;
   stroke-width: 1.25;
   fill: transparent;
@@ -102,7 +103,7 @@ html body main .glass #socials .social svg {
   height: 72px;
   stroke-linejoin: round;
   stroke-linecap: round;
-  stroke: #eae;
+  stroke: #ece;
   -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
   -webkit-transition: all 0.2s;
@@ -110,47 +111,220 @@ html body main .glass #socials .social svg {
 }
 
 @media (max-width: 767px) {
-  html body main .glass #socials .social svg {
+  html body main #overview #socials .social svg {
     width: 48px;
     height: 48px;
   }
 }
 
-html body main .glass #socials .social svg:hover {
+html body main #overview #socials .social svg:hover {
   -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
           filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
 }
 
-html body main .glass #socials .social svg#mail:hover {
+html body main #overview #socials .social svg#mail:hover {
   stroke: #fef;
 }
 
-html body main .glass #socials .social svg#yt:hover {
+html body main #overview #socials .social svg#yt:hover {
   stroke: #f77;
 }
 
-html body main .glass #socials .social svg#github {
+html body main #overview #socials .social svg#github {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
 
-html body main .glass #socials .social svg#github:hover {
+html body main #overview #socials .social svg#github:hover {
   stroke: #9af;
 }
 
-html body main .glass #socials .social svg#itch {
+html body main #overview #socials .social svg#itch {
   stroke-width: 1.25;
 }
 
-html body main .glass #socials .social svg#itch:hover {
+html body main #overview #socials .social svg#itch:hover {
   stroke: #e88;
 }
 
-html body #bubbles {
-  height: 100%;
+html body main #skills {
+  padding: 1rem 2rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 10px 10px 0 0;
+}
+
+html body main #skills #tech {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+html body main #skills #tech .tech-item {
+  cursor: pointer;
+}
+
+html body main #skills #tech .tech-item svg {
+  fill: #ece;
+  -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+  margin: 0.5rem 0.5rem;
+  width: 64px;
+  height: 64px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+html body main #skills #tech .tech-item svg:hover {
+  -webkit-filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.5));
+}
+
+html body main #skills #tech .tech-item#tech-js svg:hover {
+  fill: #dd9;
+}
+
+html body main #skills #tech .tech-item#tech-ts svg:hover {
+  fill: #99d;
+}
+
+html body main #skills #tech .tech-item#tech-html svg:hover {
+  fill: #f77;
+}
+
+html body main #skills #tech .tech-item#tech-css svg:hover {
+  fill: #aaf;
+}
+
+html body main #skills #tech .tech-item#tech-sass svg:hover {
+  fill: #f79;
+}
+
+html body main #skills #tech .tech-item#tech-docker svg:hover {
+  fill: #99f;
+}
+
+html body main #skills #tech .tech-item#tech-py svg:hover {
+  fill: #88d;
+}
+
+html body main #skills #tech .tech-item#tech-php svg:hover {
+  fill: #99c;
+}
+
+html body main #carousel {
+  cursor: -webkit-grab;
+  cursor: grab;
+  position: relative;
+  height: 32rem;
   width: 100%;
+  background: rgba(0, 0, 0, 0.0001);
+  margin: auto;
+  z-index: 100;
+  overflow: hidden;
+}
+
+html body main #carousel .glass {
+  position: absolute;
+  -webkit-animation: carousel-rotation 4s linear 4s infinite;
+          animation: carousel-rotation 4s linear 4s infinite;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
+  width: 40rem;
+  height: 25rem;
+  left: calc(50% - 20rem);
+  top: 5rem;
+  -webkit-box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15);
+  opacity: 100%;
+  -webkit-transform: translateY(370%) rotate(0deg) translateY(-370%);
+          transform: translateY(370%) rotate(0deg) translateY(-370%);
+  -webkit-transition: -webkit-animation-delay 0.6s, -webkit-box-shadow 0.1s;
+  transition: -webkit-animation-delay 0.6s, -webkit-box-shadow 0.1s;
+  transition: animation-delay 0.6s, box-shadow 0.1s;
+  transition: animation-delay 0.6s, box-shadow 0.1s, -webkit-animation-delay 0.6s, -webkit-box-shadow 0.1s;
+}
+
+html body main #carousel .glass.focus {
+  -webkit-box-shadow: 0 8px 20px 8px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 8px 20px 8px rgba(0, 0, 0, 0.35);
+}
+
+@-webkit-keyframes carousel-rotation {
+  from {
+    -webkit-transform: translateY(740%) rotate(-70deg) translateY(-740%);
+            transform: translateY(740%) rotate(-70deg) translateY(-740%);
+    opacity: 0%;
+  }
+  25% {
+    -webkit-transform: translateY(370%) rotate(-35deg) translateY(-370%);
+            transform: translateY(370%) rotate(-35deg) translateY(-370%);
+    opacity: 65%;
+  }
+  50% {
+    -webkit-transform: translateY(296%) rotate(0deg) translateY(-296%);
+            transform: translateY(296%) rotate(0deg) translateY(-296%);
+    opacity: 100%;
+  }
+  75% {
+    -webkit-transform: translateY(370%) rotate(35deg) translateY(-370%);
+            transform: translateY(370%) rotate(35deg) translateY(-370%);
+    opacity: 65%;
+  }
+  to {
+    -webkit-transform: translateY(740%) rotate(70deg) translateY(-740%);
+            transform: translateY(740%) rotate(70deg) translateY(-740%);
+    opacity: 0%;
+  }
+}
+
+@keyframes carousel-rotation {
+  from {
+    -webkit-transform: translateY(740%) rotate(-70deg) translateY(-740%);
+            transform: translateY(740%) rotate(-70deg) translateY(-740%);
+    opacity: 0%;
+  }
+  25% {
+    -webkit-transform: translateY(370%) rotate(-35deg) translateY(-370%);
+            transform: translateY(370%) rotate(-35deg) translateY(-370%);
+    opacity: 65%;
+  }
+  50% {
+    -webkit-transform: translateY(296%) rotate(0deg) translateY(-296%);
+            transform: translateY(296%) rotate(0deg) translateY(-296%);
+    opacity: 100%;
+  }
+  75% {
+    -webkit-transform: translateY(370%) rotate(35deg) translateY(-370%);
+            transform: translateY(370%) rotate(35deg) translateY(-370%);
+    opacity: 65%;
+  }
+  to {
+    -webkit-transform: translateY(740%) rotate(70deg) translateY(-740%);
+            transform: translateY(740%) rotate(70deg) translateY(-740%);
+    opacity: 0%;
+  }
+}
+
+html body #bubbles {
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left bottom, left top, from(darkmagenta), to(#7462e0));
+  background: linear-gradient(0deg, darkmagenta 0%, #7462e0 100%);
   position: absolute;
   top: 0;
+  padding-bottom: 20rem;
+  margin-bottom: 100rem;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
 html body #bubbles bubble {
@@ -159,7 +333,7 @@ html body #bubbles bubble {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 100rem;
   z-index: 20;
-  -webkit-filter: blur(3px);
-          filter: blur(3px);
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
 }
 /*# sourceMappingURL=home.css.map */

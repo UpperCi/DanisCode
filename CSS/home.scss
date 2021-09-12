@@ -21,15 +21,21 @@ $desktop-width: 1024px;
 	}
 }
 
+@mixin svgHover {
+    svg:hover {
+        @content;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
 
 html {
     width: 100%;
-    height: 100%;
-    background: rgb(139,0,139);
-    background: linear-gradient(0deg, rgba(139,0,139,1) 0%, rgba(116,98,224,1) 100%);
+    min-height: 100%;
+
+    background-color: #214;
 
     $font-color: #fef;
     $font-dark-color: #ede;
@@ -39,33 +45,25 @@ html {
         height: 100%;
         margin: 0;
 
-        overflow: hidden;
-
         main {
             width: 100%;
             height: 100%;
+            padding-bottom: 5rem;
 
-            #padding {
+            .padding {
                 height: 20vh;
             }
     
             .glass {
                 position: relative;
-                background: rgba( 72, 182, 249, 0.5 );
-                box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                // background: rgba( 72, 182, 249, 0.5 );
+                background: linear-gradient(355deg, rgba( 72, 182, 249, 0.4 ) 0%, rgba( 72, 182, 249, 0.5 ) 80%, rgba( 72, 182, 249, 0.7 ) 100%);
+                box-shadow: 0 8px 32px 0 rgba( 0,0,0, 0.3 );
                 backdrop-filter: blur(10px);
                 border-radius: 10px;
                 border: 2px solid rgba( 255, 255, 255, 0.18 );
-    
                 width: fit-content;
                 margin: auto;
-                padding: 1rem 6rem;
-
-                @include phone {
-                    width: calc(100% - 2rem);
-                    margin: 1rem;
-                    padding: 1rem;
-                }
 
                 z-index: 100;
                 p {
@@ -92,7 +90,18 @@ html {
                         }
                     }
                 }
+            }
 
+            #overview {
+                padding: 1rem 4rem;
+
+                @include phone {
+                    width: calc(100% - 2rem);
+                    margin: 1rem;
+                    padding: 1rem;
+                }
+
+                
                 #socials {
                     display: flex;
                     width: fit-content;
@@ -101,8 +110,6 @@ html {
 
                     .social {
                         cursor: pointer;
-
-                        // border: 1px solid rgba( 255, 255, 255, 0.18 );
 
                         svg {
                             $stroke: 1.25;
@@ -120,7 +127,7 @@ html {
 
                             stroke-linejoin: round;
                             stroke-linecap: round;
-                            stroke: #eae;
+                            stroke: #ece;
                             filter: drop-shadow( 0px 3px 2px rgba(0, 0, 0, .2));
 
                             &:hover {
@@ -156,18 +163,149 @@ html {
 
                             transition: all 0.2s;
                         }
-
                     }
                 }
+            }
+
+            #skills {
+                padding: 1rem 2rem;
+                margin-top: 6rem;
+                margin-bottom: 3rem;
+                width: fit-content;
+                border-radius: 10px 10px 0 0;
+
+                #tech {
+                    display: flex;
+                    .tech-item {
+                        cursor: pointer;
+                        svg {
+                            fill: #ece;
+                            filter: drop-shadow( 0px 3px 2px rgba(0, 0, 0, .2));
+                            $size: 64px;
+                            margin: 0.5rem 0.5rem;
+                            width: $size;
+                            height: $size;
+                            flex-wrap: wrap;
+
+                            &:hover {
+                                filter: drop-shadow( 0px 3px 2px rgba(0, 0, 0, 0.5));
+                            }
+                            transition: all 0.2s;
+                        }
+                        &#tech-js {
+                            @include svgHover {
+                                fill: #dd9;
+                            }
+                        }
+                        &#tech-ts {
+                            @include svgHover {
+                                fill: #99d;
+                            }
+                        }
+                        &#tech-html {
+                            @include svgHover {
+                                fill: #f77;
+                            }
+                        }
+                        &#tech-css {
+                            @include svgHover {
+                                fill: #aaf;
+                            }
+                        }
+                        &#tech-sass {
+                            @include svgHover {
+                                fill: #f79;
+                            }
+                        }
+                        &#tech-docker {
+                            @include svgHover {
+                                fill: #99f;
+                            }
+                        }
+                        &#tech-py {
+                            @include svgHover {
+                                fill: #88d;
+                            }
+                        }
+                        &#tech-php {
+                            @include svgHover {
+                                fill: #99c;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #carousel {
+                cursor: grab;
+                position: relative;
+                height: 32rem;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.0001);
+                margin: auto;
+                z-index: 100;
+                .glass {
+                    position: absolute;
+                    $translate-dist: 370%;
+                    animation: carousel-rotation 4s linear 4s infinite;
+                    animation-play-state: paused;
+                    animation-delay: -2s;
+                    width: 40rem;
+                    height: 25rem;
+                    left: calc(50% - 20rem);
+                    top: 5rem;
+                    box-shadow: 0 8px 24px 0 rgba( 0, 0, 0, 0.15 );
+
+                    &.focus {
+                        box-shadow: 0 8px 20px 8px rgba( 0, 0, 0, 0.35 );
+                    }
+
+                    // rotation
+                    opacity: 100%;
+                    transform: translateY($translate-dist) rotate(0deg) translateY(-$translate-dist);
+
+                    @keyframes carousel-rotation {
+                        from {
+                            transform: translateY(2 * $translate-dist) rotate(-70deg) translateY(2 * -$translate-dist);
+                            opacity: 0%;
+                        }
+                        25% {
+                            transform: translateY($translate-dist) rotate(-35deg) translateY(-$translate-dist);
+                            opacity: 65%;
+                        }
+                        50% {
+                            transform: translateY($translate-dist / 1.25) rotate(0deg) translateY(-$translate-dist / 1.25);
+                            opacity: 100%;
+                        }
+                        75% {
+                            transform: translateY($translate-dist) rotate(35deg) translateY(-$translate-dist);
+                            opacity: 65%;
+                        }
+                        to {
+                            transform: translateY(2 * $translate-dist) rotate(70deg) translateY(2 * -$translate-dist);
+                            opacity: 0%;
+                        }
+                    }
+
+                    transition: animation-delay 0.6s, box-shadow 0.1s;
+                }
+                overflow: hidden;
             }
         }
 
         #bubbles {
-            height: 100%;
+            min-height: 100%;
             width: 100%;
+            overflow: hidden;
+            // background: rgb(139,0,139);
+            background: linear-gradient(0deg, rgba(139,0,139,1) 0%, rgba(116,98,224,1) 100%);
 
             position: absolute;
             top: 0;
+
+            padding-bottom: 20rem;
+            margin-bottom: 100rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
 
             bubble {
                 position: absolute;
@@ -179,7 +317,7 @@ html {
 
                 z-index: 20;
 
-                filter: blur(3px);
+                filter: blur(4px);
             }
         }
     }
