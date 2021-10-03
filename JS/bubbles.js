@@ -1,4 +1,5 @@
 const bubbleDiv = document.getElementById('bubbles');
+const bubbleFG = document.getElementById('bubblesFG');
 let rect = bubbleDiv.getBoundingClientRect();
 
 const bubbleSpeed = 80;

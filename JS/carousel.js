@@ -6,36 +6,31 @@ const calcOffset = 0.5;
 const itemData = [
     {
         "name": "portfolio",
-        "bgStart": [139, 0, 139], //bottom
-        "bgEnd": [116, 98, 224],
+        "gradient": "linear-gradient(0deg, rgb(139,0,139) 0%, rgb(116,98,224) 100%)",
         "glass": [72, 182, 249],
         "content": {}
     },
     {
         "name": "ccc",
-        "bgStart": [154,104,27],
-        "bgEnd": [59,40,78],
+        "gradient": "linear-gradient(0deg, rgb(154,104,27) 0%, rgb(59,40,78) 100%)",
         "glass": [199, 136, 42],
         "content": {}
     },
     {
         "name": "sb",
-        "bgStart": [72,16,115],
-        "bgEnd": [156,92,194],
+        "gradient": "linear-gradient(0deg, rgb(72,16,115) 0%, rgb(156,92,194) 100%)",
         "glass": [182, 80, 191],
         "content": {}
     },
     {
         "name": "unplugged",
-        "bgStart": [25,61,63],
-        "bgEnd": [65,90,173],
+        "gradient": "linear-gradient(0deg, rgb(25,61,63) 0%, rgb(65,90,173) 100%)",
         "glass": [65, 150, 186],
         "content": {}
     },
     {
         "name": "magazine",
-        "bgStart": [38,148,63],
-        "bgEnd": [3,75,65],
+        "gradient": "linear-gradient(0deg, rgb(38,148,63) 0%, rgb(3,75,65) 100%)",
         "glass": [3, 161, 56],
         "content": {}
     }
@@ -91,8 +86,6 @@ function createItem(data) {
     let item = document.createElement('div');
     item.classList.add('glass');
     item.style.background = createCardBG(data['glass']);
-    item.dataset['bgStart'] = data['bgStart'];
-    item.dataset['bgEnd'] = data['bgEnd'];
     return item;
 }
 
@@ -139,16 +132,10 @@ function onMouseUp(e) {
 }
 
 function setBG(start, end, diff) {
-    let startBG = [start['bgStart'][0], start['bgStart'][1], start['bgStart'][2]];
-    let endBG = [start['bgEnd'][0], start['bgEnd'][1], start['bgEnd'][2]];
     let cardBG = [start['glass'][0], start['glass'][1], start['glass'][2]];
+
     for (let i = 0; i < 3; i++) {
-        // 0 -> 100 | 0.8 -> 80
-        let startDiff = end['bgStart'][i] - startBG[i];
-        let endDiff = end['bgEnd'][i] - endBG[i];
         let cardDiff = end['glass'][i] - cardBG[i];
-        startBG[i] += Math.round((startDiff) * diff);
-        endBG[i] += Math.round((endDiff) * diff);
         cardBG[i] += Math.round((cardDiff) * diff);
     }
 
@@ -157,8 +144,9 @@ function setBG(start, end, diff) {
         card.style.background = createCardBG(cardBG);
     }
 
-    bubbleDiv.style.background = `linear-gradient(0deg, rgba(${startBG[0]},${startBG[1]},${startBG[2]},1) 0%,
-    rgba(${endBG[0]},${endBG[1]},${endBG[2]},1) 100%)`;
+    bubbleDiv.style.background = start['gradient'];
+    bubbleFG.style.background = end['gradient'];
+    bubbleFG.style.opacity = `${diff}`;
 }
 
 function interBG() {
